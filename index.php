@@ -8,8 +8,6 @@
     <title>TEst  PHP</title>
 </head>
 <body>
-    <?php echo '<p>Hello World</p>'; ?>
-    
     <?php
     $sql = "SELECT organisations.orgName, organisations.password, orgtypes.orgType FROM organisations INNER JOIN orgtypes ON organisations.orgTypeID=orgtypes.orgTypeID;";
     $result = mysqli_query($conn, $sql);
@@ -19,14 +17,10 @@
         while ($row = mysqli_fetch_assoc($result)){
             echo $row['orgName'] . "<br>";
             echo $row['orgType']. "<br>";
-            //echo $row['qrCodeID']. "<br>";
             echo $row['password']. "<br>";
-            //echo $row['email']. "<br>";
-
-            
+                
         }
     }
     ?>
-    
 </body>
 </html>
