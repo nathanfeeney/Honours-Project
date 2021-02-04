@@ -11,19 +11,18 @@
     <?php echo '<p>Hello World</p>'; ?>
     
     <?php
-    $sql = "SELECT * FROM users;";
+    $sql = "SELECT organisations.orgName, organisations.password, orgtypes.orgType FROM organisations INNER JOIN orgtypes ON organisations.orgTypeID=orgtypes.orgTypeID;";
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
     
     if ($resultCheck > 0){
         while ($row = mysqli_fetch_assoc($result)){
-            echo $row['store_name'] . "<br>";
-            echo $row['qr_code']. "<br>";
-            echo $row['location']. "<br>";
+            echo $row['orgName'] . "<br>";
+            echo $row['orgType']. "<br>";
+            //echo $row['qrCodeID']. "<br>";
             echo $row['password']. "<br>";
-            echo $row['menu']. "<br>";
-            echo $row['deals']. "<br>";
-            echo $row['events']. "<br>";
+            //echo $row['email']. "<br>";
+
             
         }
     }
