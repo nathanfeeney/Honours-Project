@@ -1,26 +1,47 @@
-<?php
-    include_once 'connection.php';
+
+<?php 
+  session_start(); 
+
+  if (!isset($_SESSION['orgName'])) {
+  	$_SESSION['msg'] = "You must log in first";
+  	header('location: login.php');
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['orgName']);
+  	header("location: login.php");
+  }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>TEst  PHP</title>
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <?php
-    $sql = "SELECT organisations.orgName, organisations.password, orgtypes.orgType FROM organisations INNER JOIN orgtypes ON organisations.orgTypeID=orgtypes.orgTypeID;";
-    $result = mysqli_query($conn, $sql);
-    $resultCheck = mysqli_num_rows($result);
-    
-    if ($resultCheck > 0){
-        while ($row = mysqli_fetch_assoc($result)){
-            echo $row['orgName'] . "<br>";
-            echo $row['orgType']. "<br>";
-            echo $row['password']. "<br>";
-                
-        }
-    }
-    ?>
+
+<div class="header">
+	<h2>Home Page</h2>
+</div>
+<div class="content">
+  	<!-- notification message -->
+  	<?php if (isset($_SESSION['success'])) : ?>
+      <div class="error success" >
+      	<h3>
+          <?php 
+          	echo $_SESSION['success']; 
+          	unset($_SESSION['success']);
+          ?>
+      	</h3>
+      </div>
+  	<?php endif ?>
+
+    <!-- logged in user information -->
+    <?php  if (isset($_SESSION['orgName'])) : ?>
+    	<p>Welcome <strong><?php echo $_SESSION['orgName']; ?></strong></p>
+    	<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+    <?php endif ?>
+</div>
+		
 </body>
 </html>
