@@ -3,7 +3,7 @@
 <html>
 <head>
   <title>Registration system PHP and MySQL</title>
-  <!--<link rel="stylesheet" type="text/css" href="style.css">-->
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <div class="header">
@@ -13,7 +13,7 @@
   <form method="post" action="login.php">
   	<?php include('errors.php'); ?>
   	<div class="input-group">
-  		<label>Organisation Name</label>
+  		<label>orgName</label>
   		<input type="text" name="orgName" >
   	</div>
   	<div class="input-group">
