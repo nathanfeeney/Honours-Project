@@ -15,10 +15,11 @@ if (isset($_POST['reg_user'])) {
   $orgName = mysqli_real_escape_string($db, $_POST['orgName']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
   $orgTypeID = mysqli_real_escape_string($db, $_POST['orgTypeID']);
-  $qrCodeID = mysqli_real_escape_string($db, $_POST['qrCodeID']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 
+  
+    
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($orgName)) { array_push($errors, "Username is required"); }
@@ -28,7 +29,7 @@ if (isset($_POST['reg_user'])) {
   if ($password_1 != $password_2) {
 	array_push($errors, "The two passwords do not match");
   }
-
+    include('qrtest.php');
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
   $user_check_query = "SELECT * FROM organisations WHERE orgName='$orgName' OR email='$email' LIMIT 1";
@@ -49,9 +50,11 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO organisations (orgName, email, orgTypeID, qrCodeID, password) 
-  			  VALUES('$orgName', '$email','$orgTypeID','$qrCodeID', '$password')";
-  	mysqli_query($db, $query);
+  	$query = "INSERT INTO organisations (orgName, email, orgTypeID, qrFilePath, password) 
+  			  VALUES('$orgName', '$email','$orgTypeID','$qrFilePath', '$password' )";
+   
+  	mysqli_query($db, $query, $QRquery);
+    
   	$_SESSION['orgName'] = $orgName;
   	$_SESSION['success'] = "You are now logged in";
   	header('location: index.php');

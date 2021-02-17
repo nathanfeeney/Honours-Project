@@ -5,13 +5,13 @@
     include('config.php');
 
 //Variable that holds connection information
-$server = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dissertation";
+//$server = "localhost";
+//$username = "root";
+//$password = "";
+//$dbname = "dissertation";
 
 //Create connection
-$conn = mysqli_connect($server, $username, $password, $dbname);
+//$conn = mysqli_connect($server, $username, //$password, $dbname);
 
     // how to save PNG codes to server
     
@@ -43,6 +43,6 @@ $conn = mysqli_connect($server, $username, $password, $dbname);
     // displaying
     echo '<img src="'.$urlRelativeFilePath.'" />';
 
-$insQuery = "INSERT INTO qrcodes (qrFilePath) 
-  			  VALUES('$qrFilePath')";
-mysqli_query($conn, $insQuery);
+//$insQuery = "INSERT INTO qrcodes (qrFilePath) 
+ // 			  VALUES('$qrFilePath')";
+//mysqli_query($db, $insQuery);
