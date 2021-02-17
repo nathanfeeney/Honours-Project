@@ -17,7 +17,7 @@ $conn = mysqli_connect($server, $username, $password, $dbname);
     
     $tempDir = "qrcodes/";
     
-    $codeContents = 'http://www.youtube.com';
+    $codeContents = 'http://192.168.0.21/dissertation/user-template.php';
     
     // we need to generate filename somehow, 
     // with md5 or with database ID used to obtains $codeContents...
