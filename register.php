@@ -17,6 +17,14 @@
   	  <input type="text" name="orgName" value="<?php echo $orgName; ?>">
   	</div>
   	<div class="input-group">
+  	  <label>qrCodeID</label>
+  	  <input type="text" name="qrCodeID" value="<?php echo $qrCodeID; ?>">
+  	</div>
+  	<div class="input-group">
+  	  <label>orgtypeID</label>
+  	  <input type="int" name="orgTypeID" value="<?php echo $orgTypeID; ?>">
+  	</div>
+  	<div class="input-group">
   	  <label>Email</label>
   	  <input type="email" name="email" value="<?php echo $email; ?>">
   	</div>
