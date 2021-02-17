@@ -1,13 +1,23 @@
+<!-- QR CODE GENERATOR -->
 <?php
-
+    
     include('phpqrcode/qrlib.php');
     include('config.php');
+
+//Variable that holds connection information
+$server = "localhost";
+$username = "root";
+$password = "";
+$dbname = "dissertation";
+
+//Create connection
+$conn = mysqli_connect($server, $username, $password, $dbname);
 
     // how to save PNG codes to server
     
     $tempDir = "qrcodes/";
     
-    $codeContents = 'This Goes From File';
+    $codeContents = 'http://www.youtube.com';
     
     // we need to generate filename somehow, 
     // with md5 or with database ID used to obtains $codeContents...
@@ -15,6 +25,7 @@
     
     $pngAbsoluteFilePath = $tempDir.$fileName;
     $urlRelativeFilePath = $tempDir.$fileName;
+    $qrFilePath = $pngAbsoluteFilePath;
     
     // generating
     if (!file_exists($pngAbsoluteFilePath)) {
@@ -31,3 +42,7 @@
     
     // displaying
     echo '<img src="'.$urlRelativeFilePath.'" />';
+
+$insQuery = "INSERT INTO qrcodes (qrFilePath) 
+  			  VALUES('$qrFilePath')";
+mysqli_query($conn, $insQuery);
