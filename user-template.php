@@ -2,8 +2,8 @@
 include('connection.php');
 ?>
 <?php
-
-$sq = "SELECT * FROM organisations WHERE orgID='5'";
+$id = $_GET['id'];
+$sq = "SELECT * FROM organisations WHERE orgID='$id'";
 
 echo "<b> <center>Database Output</center> </b> <br> <br>";
 
