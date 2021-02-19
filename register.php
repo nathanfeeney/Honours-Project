@@ -13,8 +13,12 @@
   <form method="post" action="register.php">
   	<?php include('errors.php'); ?>
   	<div class="input-group">
-  	  <label>Username</label>
+  	  <label>orgName</label>
   	  <input type="text" name="orgName" value="<?php echo $orgName; ?>">
+  	</div>
+  	<div class="input-group">
+  	  <label>orgtypeID</label>
+  	  <input type="int" name="orgTypeID" value="<?php echo $orgTypeID; ?>">
   	</div>
   	<div class="input-group">
   	  <label>Email</label>
