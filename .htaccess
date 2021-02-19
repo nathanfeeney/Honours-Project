@@ -1,4 +1,4 @@
 RewriteEngine On
 
-RewriteRule ^easy?$ user-template.php
-RewriteRule ^user/ user-template.php?id=14
+RewriteRule ^user-template.php?id=$1?$ user-template.php
+
