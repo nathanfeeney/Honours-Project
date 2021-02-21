@@ -13,10 +13,12 @@ $db = mysqli_connect('localhost', 'root', '', 'dissertation');
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
   $orgName = mysqli_real_escape_string($db, $_POST['orgName']);
+  
   $email = mysqli_real_escape_string($db, $_POST['email']);
   $orgTypeID = mysqli_real_escape_string($db, $_POST['orgTypeID']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
+    
 
   
     
@@ -49,9 +51,12 @@ if (isset($_POST['reg_user'])) {
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
+    $uniqueID = $orgName;
+    $uniqueID = str_replace(' ', '', $uniqueID);
+    
 
-  	$query = "INSERT INTO organisations (orgName, email, orgTypeID, qrFilePath, password) 
-  			  VALUES('$orgName', '$email','$orgTypeID','$qrFilePath', '$password' )";
+  	$query = "INSERT INTO organisations (orgName, uniqueID, email, orgTypeID, qrFilePath, password) 
+  			  VALUES('$orgName', '$uniqueID', '$email','$orgTypeID','$qrFilePath', '$password' )";
    
   	mysqli_query($db, $query, $QRquery);
     
