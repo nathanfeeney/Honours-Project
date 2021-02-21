@@ -2,7 +2,7 @@
 <?php
     
     include('phpqrcode/qrlib.php');
-    include('config.php');
+   
 
 //Variable that holds connection information
 //$server = "localhost";
@@ -17,7 +17,7 @@
     
     $tempDir = "qrcodes/";
     
-    $codeContents = 'http://192.168.0.21/dissertation/user-template.php';
+    $codeContents = 'hv';
     
     // we need to generate filename somehow, 
     // with md5 or with database ID used to obtains $codeContents...

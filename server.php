@@ -31,7 +31,7 @@ if (isset($_POST['reg_user'])) {
   if ($password_1 != $password_2) {
 	array_push($errors, "The two passwords do not match");
   }
-    include('qrtest.php');
+  
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
   $user_check_query = "SELECT * FROM organisations WHERE orgName='$orgName' OR email='$email' LIMIT 1";
@@ -52,7 +52,7 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
     $uniqueID = "TESTING";
-    include("qrTest.php");
+    include('qrtest.php');
    // $uniqueID = str_replace(' ', '', $uniqueID);
     
 
