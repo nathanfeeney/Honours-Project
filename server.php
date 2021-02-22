@@ -9,15 +9,21 @@ $errors = array();
 // connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'dissertation');
 
+
+    
+    
+  
+  //$qrFilePath = "qr";
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
   $orgName = mysqli_real_escape_string($db, $_POST['orgName']);
-  
   $email = mysqli_real_escape_string($db, $_POST['email']);
   $orgTypeID = mysqli_real_escape_string($db, $_POST['orgTypeID']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
+  include("qrtest.php");
+    $uniqueID = md5($orgName);
     
 
   
@@ -25,6 +31,8 @@ if (isset($_POST['reg_user'])) {
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($orgName)) { array_push($errors, "Username is required"); }
+  if (empty($uniqueID)) { array_push($errors, "UID is required"); }
+  if (empty($qrFilePath)) { array_push($errors, "qr is required"); }
   if (empty($email)) { array_push($errors, "Email is required"); }
 
   if (empty($password_1)) { array_push($errors, "Password is required"); }
@@ -49,20 +57,24 @@ if (isset($_POST['reg_user'])) {
   }
 
   // Finally, register user if there are no errors in the form
+ 
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
-    $uniqueID = "TESTING";
-    include('qrtest.php');
-   // $uniqueID = str_replace(' ', '', $uniqueID);
     
-
+    
+   // $uniqueID = str_replace(' ', '', $uniqueID);
+      
+      
+      
+      
+      //
   	$query = "INSERT INTO organisations (orgName, uniqueID, email, orgTypeID, qrFilePath, password) 
-  			  VALUES('$orgName', '$uniqueID', '$email','$orgTypeID','$qrFilePath', '$password' )";
+  			  VALUES('$orgName', '$uniqueID', '$email', '$orgTypeID', '$qrFilePath', '$password')";
    
-  	mysqli_query($db, $query, $QRquery);
+  	mysqli_query($db, $query);
     
   	$_SESSION['orgName'] = $orgName;
-  	$_SESSION['success'] = "You are now logged in";
+  	$_SESSION['success'] = "You are now logged in and the file path is $qrFilePath";
   	header('location: index.php');
   }
 }

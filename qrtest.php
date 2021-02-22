@@ -2,6 +2,7 @@
 <?php
     
     include('phpqrcode/qrlib.php');
+    include('config.php');
    
 
 //Variable that holds connection information
@@ -16,12 +17,11 @@
     // how to save PNG codes to server
     
     $tempDir = "qrcodes/";
-    
-    $codeContents = 'hv';
+    $codeContents = md5($orgName);
     
     // we need to generate filename somehow, 
     // with md5 or with database ID used to obtains $codeContents...
-    $fileName = '005_file_'.md5($codeContents).'.png';
+    $fileName = '005_file_'.$codeContents.'.png';
     
     $pngAbsoluteFilePath = $tempDir.$fileName;
     $urlRelativeFilePath = $tempDir.$fileName;

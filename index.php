@@ -1,6 +1,7 @@
-<?php 
+<?php include('connection.php') ?>
+ <?php 
   session_start(); 
-
+    
   if (!isset($_SESSION['orgName'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
@@ -21,6 +22,7 @@
 
 <div class="header">
 	<h2>Home Page</h2>
+	
 </div>
 <div class="content">
   	<!-- notification message -->
@@ -38,6 +40,7 @@
     <!-- logged in user information -->
     <?php  if (isset($_SESSION['orgName'])) : ?>
     	<p>Welcome <strong><?php echo $_SESSION['orgName']; ?></strong></p>
+    	<?php include('displayQR.php');?>
     	<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>
 </div>
