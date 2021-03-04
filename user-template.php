@@ -7,7 +7,7 @@ include('connection.php');
 $sq = "SELECT * FROM organisations";
 
 $id = $_GET['id'];
-$sq = "SELECT * FROM organisations WHERE orgID='$id'";
+$sq = "SELECT * FROM organisations WHERE uniqueID='$id'";
 
 
 echo "<b> <center>Database Output</center> </b> <br> <br>";
