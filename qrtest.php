@@ -17,11 +17,12 @@
     // how to save PNG codes to server
     
     $tempDir = "qrcodes/";
-    $codeContents = md5($orgName);
+    $orgNameAfter = md5($orgName);
+    $codeContents = 'http://192.168.0.21/dissertation/user-template.php?id='.$orgNameAfter;
     
     // we need to generate filename somehow, 
     // with md5 or with database ID used to obtains $codeContents...
-    $fileName = '005_file_'.$codeContents.'.png';
+    $fileName = '005_file_'.$orgNameAfter.'.png';
     
     $pngAbsoluteFilePath = $tempDir.$fileName;
     $urlRelativeFilePath = $tempDir.$fileName;
