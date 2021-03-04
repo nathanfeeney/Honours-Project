@@ -13,8 +13,8 @@ if ($result = $conn->query($displayQuery)) {
 
     while ($row = $result->fetch_assoc()) {
         $filePath = $row["qrFilePath"];
-        echo $orgName;
-        echo '<img src="'.$filePath.'" />';
+        //echo $orgName;
+        //echo '<img src="'.$filePath.'" />';
     }
 
 /*freeresultset*/

@@ -11,6 +11,12 @@
   	unset($_SESSION['orgName']);
   	header("location: login.php");
   }
+   include('displayQR.php');
+ //$orgName = $_SESSION['orgName'];
+ //$getQR = "SELECT qrFilePath FROM organisations WHERE orgName='test'";
+ //$qr = $rows['qrFilePath'];
+ 
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,8 +45,11 @@
 
     <!-- logged in user information -->
     <?php  if (isset($_SESSION['orgName'])) : ?>
-    	<p>Welcome <strong><?php echo $_SESSION['orgName']; ?></strong></p>
-    	<?php include('displayQR.php');?>
+    <img src="<?php echo $filePath ?>" alt="qr">
+    	<p>Welcome <strong><?php echo 
+        $_SESSION['orgName']; ?></strong></p>
+    	<a href="displayQR.php">Display QR</a>
+    	<!--<?php// include('displayQR.php');?> -->
     	<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>
 </div>
