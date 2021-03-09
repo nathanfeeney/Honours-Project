@@ -90,8 +90,10 @@ body {
                             lat: -34.397
                             , lng: 150.644
                         }
+                        
                         , zoom: 18
                     , });
+                    
                     infoWindow = new google.maps.InfoWindow();
                     const locationButton = document.createElement("button");
                     locationButton.textContent = "Pan to Current Location";
@@ -106,6 +108,7 @@ body {
                                         lat: position.coords.latitude
                                         , lng: position.coords.longitude
                                     , };
+                                    
                                     infoWindow.setPosition(pos);
                                     infoWindow.setContent("You are here!.");
                                     infoWindow.open(map);
@@ -113,6 +116,8 @@ body {
                                 }, () => {
                                     handleLocationError(true, infoWindow, map.getCenter());
                                 });
+                                    posL = 5;
+                                    window.alert(posL);
                         }
                         else {
                             // Browser doesn't support Geolocation
@@ -120,6 +125,7 @@ body {
                         }
                     });
                 }
+                
 
                 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                     infoWindow.setPosition(pos);

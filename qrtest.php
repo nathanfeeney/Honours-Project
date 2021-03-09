@@ -18,7 +18,7 @@
     
     $tempDir = "qrcodes/";
     $orgNameAfter = md5($orgName);
-    $codeContents = 'http://192.168.0.21/dissertation/user-template.php?id='.$orgNameAfter;
+    $codeContents = 'https://192.168.0.21/dissertation/user-template.php?id='.$orgNameAfter;
     
     // we need to generate filename somehow, 
     // with md5 or with database ID used to obtains $codeContents...
