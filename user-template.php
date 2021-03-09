@@ -13,7 +13,10 @@ include('connection.php');
         /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 #map {
-  height: 100%;
+  height: 60%;
+    width:80%;
+    border:5px solid black;
+    
 }
 
 /* Optional: Makes the sample page fill the window. */
@@ -104,7 +107,7 @@ body {
                                         , lng: position.coords.longitude
                                     , };
                                     infoWindow.setPosition(pos);
-                                    infoWindow.setContent("Location found.");
+                                    infoWindow.setContent("You are here!.");
                                     infoWindow.open(map);
                                     map.setCenter(pos);
                                 }, () => {
