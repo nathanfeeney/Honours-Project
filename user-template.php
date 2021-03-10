@@ -24,9 +24,6 @@ include('connection.php');
         $id = $_GET['id'];
         $sq = "SELECT * FROM organisations WHERE uniqueID='$id'";
 
-        echo"It has been changed";
-        echo "<b> <center>Database Output</center> </b> <br> <br>";
-        echo '<a href="user-template.php?id=1"> 2 </a>';
         if ($result = $conn->query($sq)) {
 
             while ($row = $result->fetch_assoc()) {
@@ -36,8 +33,8 @@ include('connection.php');
                 $orgID = $row["orgID"];
 
 
-                echo '<b>'.$email.'</b><br />';
-                echo '<b>'.$uniqueID.'</b><br />';
+              //  echo '<b>'.$email.'</b><br />';
+              //  echo '<b>'.$uniqueID.'</b><br />';
 
             }
 
