@@ -7,6 +7,7 @@ include('connection.php');
 <head>
     <meta charset="UTF-8">
     <title>user template PHP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css" crossorigin="anonymous"> </head>
@@ -45,7 +46,7 @@ include('connection.php');
         }
 
         ?>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col">
                     <?php echo '<h1 id="orgH1">'.$orgName.'</h1>'?> </div>

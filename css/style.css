@@ -1,5 +1,6 @@
 #map {
     height: 600px;
+    
     border: 5px solid black;
 }
 
@@ -29,4 +30,25 @@ body {
 
 .custom-map-control-button:hover {
     background: #ebebeb;
+}
+@media screen and (max-width: 760px){
+    .container{ width: 100vw; margin: 0; padding: 0; 
+    }
+    #map {
+    height: 600px;
+    border: 5px solid black;
+    }
+    .custom-map-control-button {
+    appearance: button;
+    background-color: #fff;
+    border: 1px solid grey;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    margin: 100px;
+    padding: 0.1em 0.8em;
+    height: 40px;
+    font: 400 18px Roboto, Arial, sans-serif;
+    overflow: hidden;
+}
 }
