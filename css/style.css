@@ -1,3 +1,32 @@
-*{
-color: red; 
+#map {
+    height: 600px;
+    border: 5px solid black;
+}
+
+
+/* Optional: Makes the sample page fill the window. */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-map-control-button {
+    appearance: button;
+    background-color: #fff;
+    border: 1px solid grey;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    margin: 100px;
+    padding: 0.1em 0.8em;
+    height: 40px;
+    font: 400 18px Roboto, Arial, sans-serif;
+    overflow: hidden;
+}
+
+.custom-map-control-button:hover {
+    background: #ebebeb;
 }
