@@ -12,12 +12,29 @@
   	header("location: login.php");
   }
    include('displayQR.php');
- //$orgName = $_SESSION['orgName'];
+ $orgName = $_SESSION['orgName'];
  //$getQR = "SELECT qrFilePath FROM organisations WHERE orgName='test'";
  //$qr = $rows['qrFilePath'];
- 
-    
-?>
+ $testMenu = "SELECT orgID FROM organisations WHERE orgName ='$orgName'";
+    if ($result = $conn->query($testMenu)) {
+
+            while ($row = $result->fetch_assoc()) {
+                $orgID = $row["orgID"];
+                
+                
+                
+
+
+              //  echo '<b>'.$email.'</b><br />';
+              //  echo '<b>'.$uniqueID.'</b><br />';
+
+            }
+
+        /*freeresultset*/
+        $result->free();
+        }
+
+        ?>
         <!DOCTYPE html>
         <html>
 
@@ -34,6 +51,7 @@
                     <div class="error success">
                         <h3>
           <?php 
+            
           	echo $_SESSION['success']; 
           	unset($_SESSION['success']);
           ?>
@@ -42,13 +60,18 @@
                         <!-- logged in user information -->
                         <?php  if (isset($_SESSION['orgName'])) : ?> <img src="<?php echo $filePath ?>" alt="qr">
                             <p>Welcome <strong><?php echo 
-        $_SESSION['orgName']; ?></strong></p> <a href="displayQR.php">Display QR</a>
-                            <div id="map"></div>
+                            $_SESSION['orgName']; 
+                                ;?></strong></p> <a href="displayQR.php">Display QR</a>
+                            <div id="menu">
+                                <?php echo "".$orgID.""; ?>
+                            </div>
                             <!--<?php// include('displayQR.php');?> -->
                             <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
                             <?php endif ?>
+                                <div class="container">
+                                    <?php include ('event-reg.php');?>
+                                </div>
             </div>
-
         </body>
 
         </html>

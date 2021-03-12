@@ -19,7 +19,9 @@ include('connection.php');
     <body>
         <?php
         $id = $_GET['id'];
-        $sq = "SELECT * FROM organisations, offers WHERE organisations.uniqueID='$id' AND offers.orgID = organisations.orgID";
+        $sq = "SELECT * FROM organisations, offers, events WHERE organisations.uniqueID='$id' AND
+        offers.orgID = organisations.orgID AND
+        events.orgID = organisations.orgID";
     
     
 
@@ -64,8 +66,11 @@ include('connection.php');
                                 <div class="card-body">
                                     <div class="desc">
                                         <?php
-                                            $result = $conn->query($sq);
-                                            if ($result->num_rows > 0) {
+                                            $getOffers = "SELECT * FROM offers WHERE orgID='$orgID'";
+                                            $result = $conn->query($getOffers);
+                                            $i = $result->num_rows;
+                                           
+                                            if ($i > 0) {
                                               // output data of each row
                                               while($row = $result->fetch_assoc()) {
                                                 echo "<h2>"
@@ -103,7 +108,24 @@ include('connection.php');
         </button>
                             </h5> </div>
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. </div>
+                                <div class="card-body"> <?php
+                                            $getEvents = "SELECT * FROM events WHERE orgID='$orgID'";
+                                            $result = $conn->query($getEvents);
+                                            if ($result->num_rows > 0) {
+                                              // output data of each row
+                                              while($row = $result->fetch_assoc()) {
+                                                echo "<h2>"
+                                                    .$row["eventTitle"]
+                                                    . "</h2>"
+                                                    . "<br>"
+                                                    . "<article>" .$row["eventDesc"]
+                                                    . "</article>" 
+                                                    . "<hr>";
+                                              }
+                                            } else {
+                                              echo "0 results";
+                                            }
+                                        ?></div>
                             </div>
                         </div>
                         <div class="card">

@@ -14,15 +14,15 @@
   	<?php include('errors.php'); ?>
   	<div class="input-group">
   	  <label>orgName</label>
-  	  <input type="text" name="orgName" value="<?php echo $orgName; ?>">
+  	  <input type="text" name="orgName" value="">
   	</div>
   	<div class="input-group">
   	  <label>orgtypeID</label>
-  	  <input type="int" name="orgTypeID" value="<?php echo $orgTypeID; ?>">
+  	  <input type="int" name="orgTypeID" value="">
   	</div>
   	<div class="input-group">
   	  <label>Email</label>
-  	  <input type="email" name="email" value="<?php echo $email; ?>">
+  	  <input type="email" name="email" value="">
   	</div>
   	<div class="input-group">
   	  <label>Password</label>

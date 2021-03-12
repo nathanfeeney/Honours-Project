@@ -60,13 +60,7 @@ if (isset($_POST['reg_user'])) {
  
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
-    
-    
-   // $uniqueID = str_replace(' ', '', $uniqueID);
-      
-      
-      
-      
+   // $uniqueID = str_replace(' ', '', $uniqueID)
       //
   	$query = "INSERT INTO organisations (orgName, uniqueID, email, orgTypeID, qrFilePath, password) 
   			  VALUES('$orgName', '$uniqueID', '$email', '$orgTypeID', '$qrFilePath', '$password')";
