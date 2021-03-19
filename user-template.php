@@ -10,13 +10,21 @@ include('connection.php');
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css" crossorigin="anonymous"> </head>
+        <link rel="stylesheet" href="css/style.css" crossorigin="anonymous"> 
+    </head>
     <style>
-        /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
+        .card-header h2{
+            
+            color:#647b99;
+        }
+        .card-header h2:hover{
+            color:#9bb4d3;
+            text-decoration: none;
+        }
     </style>
 
     <body>
+        <?php include('nav.php'); ?>
         <?php
         $id = $_GET['id'];
         $sq = "SELECT * FROM organisations, offers, events WHERE organisations.uniqueID='$id' AND
@@ -34,13 +42,6 @@ include('connection.php');
                 $orgID = $row["orgID"];
                 $offTitle = $row["offer"];
                 $offDesc = $row["offDescription"];
-                
-                
-
-
-              //  echo '<b>'.$email.'</b><br />';
-              //  echo '<b>'.$uniqueID.'</b><br />';
-
             }
 
         /*freeresultset*/
@@ -97,7 +98,27 @@ include('connection.php');
         </button>
                             </h5> </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. </div>
+                                <div class="card-body"><?php
+                                            $getEvents = "SELECT * FROM menus WHERE orgID='$orgID'";
+                                            $result = $conn->query($getEvents);
+                                            if ($result->num_rows > 0) {
+                                              // output data of each row
+                                              while($row = $result->fetch_assoc()) {
+                                                  
+                                                echo '<a href="'
+                                                    .$row["menuFilePath"]
+                                                    .'">'
+                                                    . $row["menuName"]
+                                                    . "</a>"
+                                                    . "<br>"
+                                                    . "<article>" 
+                                                    . "</article>" 
+                                                    . "<hr>";
+                                              }
+                                            } else {
+                                              echo "0 results";
+                                            }
+                                        ?></div>
                             </div>
                         </div>
                         <div class="card">

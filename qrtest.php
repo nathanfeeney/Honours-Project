@@ -3,32 +3,22 @@
     
     include('phpqrcode/qrlib.php');
     include('config.php');
-   
-
-//Variable that holds connection information
-//$server = "localhost";
-//$username = "root";
-//$password = "";
-//$dbname = "dissertation";
-
-//Create connection
-//$conn = mysqli_connect($server, $username, //$password, $dbname);
-
-    // how to save PNG codes to server
-    
+   // how to save PNG codes to a folder on the server
     $tempDir = "qrcodes/";
+    // This gets the name of the currently logged in user and 
+    // encodes the name using md5.
     $orgNameAfter = md5($orgName);
+    // this saves the unique url using the encoded organisation name as id
     $codeContents = 'https://192.168.0.23/dissertation/user-template.php?id='.$orgNameAfter;
     
-    // we need to generate filename somehow, 
-    // with md5 or with database ID used to obtains $codeContents...
+    // this give the file a unique name using the encoded organisatio name
     $fileName = '005_file_'.$orgNameAfter.'.png';
     
     $pngAbsoluteFilePath = $tempDir.$fileName;
     $urlRelativeFilePath = $tempDir.$fileName;
     $qrFilePath = $pngAbsoluteFilePath;
     
-    // generating
+    // generating the contents as a QR code
     if (!file_exists($pngAbsoluteFilePath)) {
         QRcode::png($codeContents, $pngAbsoluteFilePath);
         echo 'File generated!';
@@ -37,13 +27,8 @@
         echo 'File already generated! We can use this cached file to speed up site on common codes!';
         echo '<hr />';
     }
-    
     echo 'Server PNG File: '.$pngAbsoluteFilePath;
     echo '<hr />';
     
-    // displaying
+    // displaying the QR code
     echo '<img src="'.$urlRelativeFilePath.'" />';
-
-//$insQuery = "INSERT INTO qrcodes (qrFilePath) 
- // 			  VALUES('$qrFilePath')";
-//mysqli_query($db, $insQuery);
